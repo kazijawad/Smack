@@ -12,7 +12,7 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 
 // URLs
 let BASE_URL = "http://localhost:3005/v1/"
-let REGISTER_URL = "\(BASE_URL)account/register" 
+let REGISTER_URL = "\(BASE_URL)account/register"
 
 // Segues
 let TO_LOGIN = "toLogin"
