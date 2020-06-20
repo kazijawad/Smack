@@ -23,7 +23,7 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func chooseAvatarPressed(_ sender: Any) {
-        
+        performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
     }
     
     @IBAction func chooseBackgroundColorPressed(_ sender: Any) {
@@ -41,8 +41,6 @@ class CreateAccountVC: UIViewController {
                     if success {
                         AuthService.instance.createUser(email: email, name: name, avatarName: self.avatarName, avatarColor: self.avatarColor) { (success) in
                             if (success) {
-                                print(UserDataService.instance.name)
-                                print(UserDataService.instance.avatarName)
                                 self.performSegue(withIdentifier: UNWIND_TO_CHANNEL, sender: nil)
                             }
                         }
