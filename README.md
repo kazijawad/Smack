@@ -1,4 +1,4 @@
-# iOS Slack Clone
+# Smack
 
 ## Getting Started
 
