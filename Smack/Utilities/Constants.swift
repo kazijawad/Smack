@@ -17,6 +17,7 @@ let REGISTER_URL = "\(BASE_URL)account/register"
 let LOGIN_URL = "\(BASE_URL)account/login"
 let USER_ADD_URL = "\(BASE_URL)user/add"
 let USER_BY_EMAIL_URL = "\(BASE_URL)user/byEmail/"
+let GET_CHANNELS_URL = "\(BASE_URL)channel"
 
 // Colors
 let smackPurplePlaceholder = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blue: 0.7254901961, alpha: 0.5)
