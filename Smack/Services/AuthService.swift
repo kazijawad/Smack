@@ -100,33 +100,47 @@ class AuthService {
             "avatarColor": avatarColor,
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(AuthService.instance.authToken)",
-            "Content-Type": "application/json; charset=utf-8",
-        ]
-        
-        AF.request(USER_ADD_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+        AF.request(USER_ADD_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADERS).responseJSON { (response) in
             switch response.result {
             case .success( _):
                 guard let data = response.data else { return }
-                do {
-                    let json = try JSON(data: data)
-                    let id = json["_id"].stringValue
-                    let email = json["email"].stringValue
-                    let name = json["name"].stringValue
-                    let avatarName = json["avatarName"].stringValue
-                    let avatarColor = json["avatarColor"].stringValue
-                    
-                    UserDataService.instance.setUserData(id: id, email: email, name: name, avatarName: avatarName, avatarColor: avatarColor)
-                    completion(true)
-                } catch let error {
-                    completion(false)
-                    debugPrint(error as Any)
-                }
+                let status = self.setUserInfo(data: data)
+                completion(status)
             case .failure(let error):
                 completion(false)
                 debugPrint(error as Any)
             }
+        }
+    }
+    
+    func findUserByEmail(completion: @escaping CompletionHandler) {
+        AF.request("\(USER_BY_EMAIL_URL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADERS).responseJSON { (response) in
+            switch response.result {
+            case .success( _):
+                guard let data = response.data else { return }
+                let status = self.setUserInfo(data: data)
+                completion(status)
+            case .failure(let error):
+                completion(false)
+                debugPrint(error as Any)
+            }
+        }
+    }
+    
+    func setUserInfo(data: Data) -> Bool {
+        do {
+            let json = try JSON(data: data)
+            let id = json["_id"].stringValue
+            let email = json["email"].stringValue
+            let name = json["name"].stringValue
+            let avatarName = json["avatarName"].stringValue
+            let avatarColor = json["avatarColor"].stringValue
+            
+            UserDataService.instance.setUserData(id: id, email: email, name: name, avatarName: avatarName, avatarColor: avatarColor)
+            return true
+        } catch let error {
+            debugPrint(error as Any)
+            return false
         }
     }
 }
