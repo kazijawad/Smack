@@ -169,6 +169,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="UDC-WW-pEs" id="twi-Pi-Uls"/>
+                        <outlet property="userImg" destination="V80-KG-ttq" id="a5q-Ac-cPc"/>
                         <segue destination="lft-Ds-Jsx" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" id="Cli-Wx-itv"/>
                     </connections>
                 </viewController>
