@@ -29,7 +29,6 @@ class MessageService {
                         let channel = Channel(id: id, name: name, description: description)
                         self.channels.append(channel)
                     }
-                    print(self.channels[0].name!)
                     completion(true)
                 } catch let error {
                     completion(false)
