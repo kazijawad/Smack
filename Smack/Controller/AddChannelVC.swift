@@ -9,9 +9,9 @@
 import UIKit
 
 class AddChannelVC: UIViewController {
-    @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var nameTxt: UITextField!
-    @IBOutlet weak var descriptionTxt: UITextField!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,8 @@ class AddChannelVC: UIViewController {
     }
     
     @IBAction func createChannelPressed(_ sender: Any) {
-        guard let channelName = nameTxt.text, nameTxt.text != "" else { return }
-        guard let channelDescription = descriptionTxt.text, descriptionTxt.text != "" else { return }
+        guard let channelName = nameTextField.text, nameTextField.text != "" else { return }
+        guard let channelDescription = descriptionTextField.text, descriptionTextField.text != "" else { return }
         
         SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
             if success {
@@ -33,15 +33,15 @@ class AddChannelVC: UIViewController {
         }
     }
     
-    func setupView() {
-        let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeTap(_:)))
-        bgView.addGestureRecognizer(closeTouch)
-        
-        nameTxt.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
-        descriptionTxt.attributedPlaceholder = NSAttributedString(string: "Description", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
-    }
-    
     @objc func closeTap(_ recognizer: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setupView() {
+        let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeTap(_:)))
+        backgroundView.addGestureRecognizer(closeTouch)
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: COLOR_PURPLE])
+        descriptionTextField.attributedPlaceholder = NSAttributedString(string: "Description", attributes: [NSAttributedString.Key.foregroundColor: COLOR_PURPLE])
     }
 }

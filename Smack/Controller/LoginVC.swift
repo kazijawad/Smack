@@ -9,33 +9,33 @@
 import UIKit
 
 class LoginVC: UIViewController {
-    @IBOutlet weak var usernameTxt: UITextField!
-    @IBOutlet weak var passwordTxt: UITextField!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var spinnerIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-    @IBAction func closeBtnPressed(_ sender: Any) {
+    @IBAction func closeButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func loginBtnPressed(_ sender: Any) {
-        spinner.isHidden = false
-        spinner.startAnimating()
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        spinnerIndicator.isHidden = false
+        spinnerIndicator.startAnimating()
         
-        guard let email = usernameTxt.text, usernameTxt.text != "" else { return }
-        guard let password = passwordTxt.text, passwordTxt.text != "" else { return }
+        guard let email = usernameTextField.text, usernameTextField.text != "" else { return }
+        guard let password = passwordTextField.text, passwordTextField.text != "" else { return }
         
         AuthService.instance.loginUser(email: email, password: password) { (success) in
             if success {
                 AuthService.instance.findUserByEmail { (success) in
                     if success {
                         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                        self.spinner.isHidden = true
-                        self.spinner.stopAnimating()
+                        self.spinnerIndicator.isHidden = true
+                        self.spinnerIndicator.stopAnimating()
                         self.dismiss(animated: true, completion: nil)
                     }
                 }
@@ -43,14 +43,14 @@ class LoginVC: UIViewController {
         }
     }
     
-    @IBAction func createAccountBtnPressed(_ sender: Any) {
+    @IBAction func createAccountButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: TO_CREATE_ACCOUNT, sender: nil)
     }
     
     func setupView() {
-        spinner.isHidden = true
+        spinnerIndicator.isHidden = true
         
-        usernameTxt.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
-        passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: COLOR_PURPLE])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: COLOR_PURPLE])
     }
 }

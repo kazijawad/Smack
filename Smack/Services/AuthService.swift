@@ -50,7 +50,7 @@ class AuthService {
             "password": password,
         ]
         
-        AF.request(REGISTER_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS).responseString { (response) in
+        AF.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS).responseString { (response) in
             switch response.result {
             case .success( _):
                 completion(true)
@@ -69,7 +69,7 @@ class AuthService {
             "password": password,
         ]
         
-        AF.request(LOGIN_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS).responseJSON { (response) in
+        AF.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS).responseJSON { (response) in
             switch response.result {
             case .success( _):
                 guard let data = response.data else { return }
@@ -90,7 +90,7 @@ class AuthService {
         }
     }
     
-    func createUser(email: String, name: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
+    func addUser(email: String, name: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
         let lowerCaseEmail = email.lowercased()
         
         let body: [String: Any] = [
@@ -100,7 +100,7 @@ class AuthService {
             "avatarColor": avatarColor,
         ]
         
-        AF.request(USER_ADD_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADERS).responseJSON { (response) in
+        AF.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS_BEARER).responseJSON { (response) in
             switch response.result {
             case .success( _):
                 guard let data = response.data else { return }
@@ -114,7 +114,7 @@ class AuthService {
     }
     
     func findUserByEmail(completion: @escaping CompletionHandler) {
-        AF.request("\(USER_BY_EMAIL_URL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADERS).responseJSON { (response) in
+        AF.request("\(URL_USER_BY_EMAIL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADERS_BEARER).responseJSON { (response) in
             switch response.result {
             case .success( _):
                 guard let data = response.data else { return }

@@ -9,8 +9,8 @@
 import UIKit
 
 class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var loginBtn: UIButton!
-    @IBOutlet weak var userImg: CircleImage!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var userImage: CircleImage!
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){}
@@ -35,7 +35,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setupUserInfo()
     }
     
-    @IBAction func addChannelPressed(_ sender: Any) {
+    @IBAction func addChannelButtonPressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
             let addChannel = AddChannelVC()
             addChannel.modalPresentationStyle = .custom
@@ -43,7 +43,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    @IBAction func loginBtnPressed(_ sender: Any) {
+    @IBAction func loginButtonPressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
             let profile = ProfileVC()
             profile.modalPresentationStyle = .custom
@@ -63,15 +63,19 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func setupUserInfo() {
         if AuthService.instance.isLoggedIn {
-            loginBtn.setTitle(UserDataService.instance.name, for: .normal)
-            userImg.image = UIImage(named: UserDataService.instance.avatarName)
-            userImg.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
+            loginButton.setTitle(UserDataService.instance.name, for: .normal)
+            userImage.image = UIImage(named: UserDataService.instance.avatarName)
+            userImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
         } else {
-            loginBtn.setTitle("Login", for: .normal)
-            userImg.image = UIImage(named: "menuProfileIcon")
-            userImg.backgroundColor = UIColor.clear
+            loginButton.setTitle("Login", for: .normal)
+            userImage.image = UIImage(named: "menuProfileIcon")
+            userImage.backgroundColor = UIColor.clear
             tableView.reloadData()
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,9 +97,5 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         MessageService.instance.selectedChannel = channel
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         self.revealViewController()?.revealToggle(animated: true)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
 }

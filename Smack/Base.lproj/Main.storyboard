@@ -84,8 +84,8 @@
                         <viewLayoutGuide key="safeArea" id="3iu-EF-N7P"/>
                     </view>
                     <connections>
-                        <outlet property="channelNameLbl" destination="K5S-up-S5c" id="xYK-TW-ag9"/>
-                        <outlet property="menuBtn" destination="cIn-ZY-v0a" id="FhT-i9-giQ"/>
+                        <outlet property="channelNameLabel" destination="K5S-up-S5c" id="1YR-El-KcY"/>
+                        <outlet property="menuButton" destination="cIn-ZY-v0a" id="tbW-gk-Set"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDW-JY-IQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="302" y="118.5" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
                                 <connections>
-                                    <action selector="addChannelPressed:" destination="pR1-Am-y0P" eventType="touchUpInside" id="z0R-cQ-iNX"/>
+                                    <action selector="addChannelButtonPressed:" destination="pR1-Am-y0P" eventType="touchUpInside" id="z0R-cQ-iNX"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="V80-KG-ttq" customClass="CircleImage" customModule="Smack" customModuleProvider="target">
@@ -133,7 +133,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginBtnPressed:" destination="pR1-Am-y0P" eventType="touchUpInside" id="XXe-i6-X8E"/>
+                                    <action selector="loginButtonPressed:" destination="pR1-Am-y0P" eventType="touchUpInside" id="XXe-i6-X8E"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GXZ-n3-53I">
@@ -187,9 +187,9 @@
                         <viewLayoutGuide key="safeArea" id="137-Uq-d10"/>
                     </view>
                     <connections>
-                        <outlet property="loginBtn" destination="UDC-WW-pEs" id="twi-Pi-Uls"/>
+                        <outlet property="loginButton" destination="UDC-WW-pEs" id="twi-Pi-Uls"/>
                         <outlet property="tableView" destination="GXZ-n3-53I" id="Ns4-XX-CFO"/>
-                        <outlet property="userImg" destination="V80-KG-ttq" id="a5q-Ac-cPc"/>
+                        <outlet property="userImage" destination="V80-KG-ttq" id="a5q-Ac-cPc"/>
                         <segue destination="lft-Ds-Jsx" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" id="Cli-Wx-itv"/>
                     </connections>
                 </viewController>
@@ -231,7 +231,7 @@
                                 </constraints>
                                 <state key="normal" image="closeButton"/>
                                 <connections>
-                                    <action selector="closeBtnPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="0xz-ru-JyV"/>
+                                    <action selector="closeButtonPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="0xz-ru-JyV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hu0-ub-moY" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
@@ -251,7 +251,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginBtnPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="Jwt-tl-EaN"/>
+                                    <action selector="loginButtonPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="Jwt-tl-EaN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9R1-uG-tV4">
@@ -265,7 +265,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="createAccountBtnPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="Ywc-K5-8dC"/>
+                                    <action selector="createAccountButtonPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="Ywc-K5-8dC"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="NMa-ws-jvZ">
@@ -331,9 +331,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="QZR-mR-egh"/>
                     <connections>
-                        <outlet property="passwordTxt" destination="N9M-05-N2g" id="Pav-z4-NPX"/>
-                        <outlet property="spinner" destination="FQw-J8-8qB" id="Eks-6n-4qy"/>
-                        <outlet property="usernameTxt" destination="4WE-Gp-2xg" id="R7I-jx-rmu"/>
+                        <outlet property="passwordTextField" destination="N9M-05-N2g" id="Pav-z4-NPX"/>
+                        <outlet property="spinnerIndicator" destination="FQw-J8-8qB" id="Eks-6n-4qy"/>
+                        <outlet property="usernameTextField" destination="4WE-Gp-2xg" id="R7I-jx-rmu"/>
                         <segue destination="iYD-Xe-4gp" kind="presentation" identifier="toCreateAccount" modalPresentationStyle="fullScreen" id="PzW-HD-Ziz"/>
                     </connections>
                 </viewController>
@@ -357,8 +357,8 @@
                                 </constraints>
                                 <state key="normal" image="closeButton"/>
                                 <connections>
-                                    <action selector="closeBtnPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="ZPy-Tf-YIz"/>
-                                    <action selector="closeBtnPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="bld-BF-BOE"/>
+                                    <action selector="closeButtonPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="ZPy-Tf-YIz"/>
+                                    <action selector="closeButtonPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="bld-BF-BOE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C5-cr-mXd" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
@@ -378,7 +378,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="createAccountPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="y2N-Tc-AyP"/>
+                                    <action selector="createAccountButtonPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="y2N-Tc-AyP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AO2-R7-P9E">
@@ -391,8 +391,8 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="chooseAvatarPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="GGD-bH-XP5"/>
-                                    <action selector="createAccountBtnPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="r4h-O1-pMM"/>
+                                    <action selector="chooseAvatarButtonPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="GGD-bH-XP5"/>
+                                    <action selector="createAccountButtonPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="r4h-O1-pMM"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-re-hVm">
@@ -471,8 +471,8 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="chooseBackgroundColorPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="zoU-SY-tHa"/>
-                                    <action selector="createAccountBtnPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="Q22-qd-yES"/>
+                                    <action selector="chooseBackgroundColorButtonPressed:" destination="iYD-Xe-4gp" eventType="touchUpInside" id="zoU-SY-tHa"/>
+                                    <action selector="createAccountButtonPressed:" destination="lft-Ds-Jsx" eventType="touchUpInside" id="Q22-qd-yES"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sSO-ah-CkO">
@@ -503,11 +503,11 @@
                         <viewLayoutGuide key="safeArea" id="lcX-36-30M"/>
                     </view>
                     <connections>
-                        <outlet property="emailTxt" destination="xzl-qJ-tf2" id="U2c-fu-Yrp"/>
-                        <outlet property="passwordTxt" destination="4B1-kC-gIw" id="rTr-jl-3dU"/>
-                        <outlet property="spinner" destination="sSO-ah-CkO" id="Xig-3o-toD"/>
-                        <outlet property="userImg" destination="xOh-2I-X06" id="RbN-NM-pah"/>
-                        <outlet property="usernameTxt" destination="J40-gx-VQf" id="iLK-gZ-R9S"/>
+                        <outlet property="emailTextField" destination="xzl-qJ-tf2" id="U2c-fu-Yrp"/>
+                        <outlet property="passwordTextField" destination="4B1-kC-gIw" id="rTr-jl-3dU"/>
+                        <outlet property="spinnerIndicator" destination="sSO-ah-CkO" id="Xig-3o-toD"/>
+                        <outlet property="userImage" destination="xOh-2I-X06" id="RbN-NM-pah"/>
+                        <outlet property="usernameTextField" destination="J40-gx-VQf" id="iLK-gZ-R9S"/>
                         <segue destination="KCY-Ur-CqY" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="bY0-GG-VFa"/>
                         <segue destination="vjM-JB-ksu" kind="presentation" identifier="toAvatarPicker" modalPresentationStyle="fullScreen" id="WDi-Dc-FTv"/>
                     </connections>
@@ -533,7 +533,7 @@
                                 </constraints>
                                 <state key="normal" image="smackBack"/>
                                 <connections>
-                                    <action selector="backBtnPressed:" destination="vjM-JB-ksu" eventType="touchUpInside" id="Fx7-GI-MMd"/>
+                                    <action selector="backButtonPressed:" destination="vjM-JB-ksu" eventType="touchUpInside" id="Fx7-GI-MMd"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4g7-If-Qoz">

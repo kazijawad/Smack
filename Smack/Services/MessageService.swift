@@ -17,7 +17,7 @@ class MessageService {
     var selectedChannel: Channel?
     
     func findAllChanne(completion: @escaping CompletionHandler) {
-        AF.request(GET_CHANNELS_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADERS).responseJSON { (response) in
+        AF.request(URL_CHANNEL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADERS_BEARER).responseJSON { (response) in
             switch response.result {
             case .success( _):
                 guard let data = response.data else { return }

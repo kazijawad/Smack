@@ -9,12 +9,14 @@
 import UIKit
 
 class ChatVC: UIViewController {
-    @IBOutlet weak var menuBtn: UIButton!
-    @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var channelNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        
+        menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
@@ -32,7 +34,7 @@ class ChatVC: UIViewController {
         if AuthService.instance.isLoggedIn {
             onLoginGetMessages()
         } else {
-            channelNameLbl.text = "Please Log In"
+            channelNameLabel.text = "Please Log In"
         }
     }
     
@@ -50,6 +52,6 @@ class ChatVC: UIViewController {
     
     func updateWithChannel() {
         let channelName = MessageService.instance.selectedChannel?.name ?? ""
-        channelNameLbl.text = "#\(channelName)"
+        channelNameLabel.text = "#\(channelName)"
     }
 }
