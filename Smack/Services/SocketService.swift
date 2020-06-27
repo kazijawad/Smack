@@ -33,6 +33,12 @@ class SocketService: NSObject {
         completion(true)
     }
     
+    func addMessage(userID: String, channelID: String, messageBody: String, completion: @escaping CompletionHandler) {
+        let user = UserDataService.instance
+        socket.emit("newMessage", messageBody, userID, channelID, user.name, user.avatarName, user.avatarColor)
+        completion(true)
+    }
+    
     func getChannel(completion: @escaping CompletionHandler) {
         socket.on("channelCreated") { (dataArray, ack) in
             guard let channelName = dataArray[0] as? String else { return }

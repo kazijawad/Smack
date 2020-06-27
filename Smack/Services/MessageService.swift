@@ -63,7 +63,6 @@ class MessageService {
                         let message = Message(id: id, channelID: channelID, message: messageBody, userName: userName, userAvatar: userAvatar, userAvatarColor: userAvatarColor, timestamp: timestamp)
                         self.messages.append(message)
                     }
-                    print(self.messages)
                     completion(true)
                 } catch let error {
                     completion(false)
