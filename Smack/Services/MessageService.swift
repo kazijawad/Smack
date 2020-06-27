@@ -14,9 +14,10 @@ class MessageService {
     static let instance = MessageService()
     
     var channels = [Channel]()
+    var messages = [Message]()
     var selectedChannel: Channel?
     
-    func findAllChanne(completion: @escaping CompletionHandler) {
+    func findAllChannels(completion: @escaping CompletionHandler) {
         AF.request(URL_CHANNEL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADERS_BEARER).responseJSON { (response) in
             switch response.result {
             case .success( _):
@@ -41,6 +42,43 @@ class MessageService {
                 debugPrint(error as Any)
             }
         }
+    }
+    
+    func findAllMessagesForChannel(channelID: String, completion: @escaping CompletionHandler) {
+        AF.request("\(URL_MESSAGES_BY_CHANNEL)\(channelID)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADERS_BEARER).responseJSON { (response) in
+            switch response.result {
+            case .success( _):
+                self.clearMessages()
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data).array!
+                    for item in json {
+                        let id = item["_id"].stringValue
+                        let channelID = item["channelId"].stringValue
+                        let messageBody = item["messageBody"].stringValue
+                        let userName = item["userName"].stringValue
+                        let userAvatar = item["userAvatar"].stringValue
+                        let userAvatarColor = item["userAvatarColor"].stringValue
+                        let timestamp = item["timeStamp"].stringValue
+                        let message = Message(id: id, channelID: channelID, message: messageBody, userName: userName, userAvatar: userAvatar, userAvatarColor: userAvatarColor, timestamp: timestamp)
+                        self.messages.append(message)
+                    }
+                    print(self.messages)
+                    completion(true)
+                } catch let error {
+                    completion(false)
+                    debugPrint(error as Any)
+                }
+                completion(true)
+            case .failure(let error):
+                completion(false)
+                debugPrint(error as Any)
+            }
+        }
+    }
+    
+    func clearMessages() {
+        messages.removeAll()
     }
     
     func clearChannels() {

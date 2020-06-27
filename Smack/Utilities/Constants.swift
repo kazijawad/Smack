@@ -18,6 +18,7 @@ let URL_LOGIN = "\(URL_BASE)account/login"
 let URL_USER_ADD = "\(URL_BASE)user/add"
 let URL_USER_BY_EMAIL = "\(URL_BASE)user/byEmail/"
 let URL_CHANNEL = "\(URL_BASE)channel"
+let URL_MESSAGES_BY_CHANNEL = "\(URL_BASE)message/byChannel/"
 
 // Colors
 let COLOR_PURPLE = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blue: 0.7254901961, alpha: 0.5)
