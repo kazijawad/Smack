@@ -98,7 +98,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OLJ-nb-r1r">
-                                <rect key="frame" x="0.0" y="124" width="414" height="664"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="665"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="80" id="F7V-23-LMf" customClass="MessageCell" customModule="Smack" customModuleProvider="target">
@@ -158,18 +158,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mf-cU-OJI">
+                                <rect key="frame" x="8" y="812" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="lne-5b-WZn" firstAttribute="centerY" secondItem="X0Q-lT-WMN" secondAttribute="centerY" id="60K-H2-60D"/>
+                            <constraint firstItem="X0Q-lT-WMN" firstAttribute="top" secondItem="8Mf-cU-OJI" secondAttribute="bottom" constant="6" id="7Ee-xH-qH5"/>
                             <constraint firstItem="3iu-EF-N7P" firstAttribute="trailing" secondItem="OLJ-nb-r1r" secondAttribute="trailing" id="Gk4-Hz-Nr3"/>
                             <constraint firstItem="X0Q-lT-WMN" firstAttribute="leading" secondItem="3iu-EF-N7P" secondAttribute="leading" id="HKK-MZ-weC"/>
                             <constraint firstItem="OLJ-nb-r1r" firstAttribute="leading" secondItem="3iu-EF-N7P" secondAttribute="leading" id="Htu-Rv-q2r"/>
                             <constraint firstItem="Em2-nt-FbW" firstAttribute="top" secondItem="S7t-fK-Qit" secondAttribute="top" id="Kar-M8-6Qv"/>
-                            <constraint firstItem="X0Q-lT-WMN" firstAttribute="top" secondItem="OLJ-nb-r1r" secondAttribute="bottom" constant="30" id="NxZ-wi-3AL"/>
+                            <constraint firstItem="X0Q-lT-WMN" firstAttribute="top" secondItem="OLJ-nb-r1r" secondAttribute="bottom" constant="29" id="NxZ-wi-3AL"/>
                             <constraint firstItem="OLJ-nb-r1r" firstAttribute="top" secondItem="Em2-nt-FbW" secondAttribute="bottom" id="SvG-4B-JTF"/>
                             <constraint firstItem="lne-5b-WZn" firstAttribute="leading" secondItem="X0Q-lT-WMN" secondAttribute="trailing" constant="8" id="UDd-Ak-KsN"/>
                             <constraint firstItem="Em2-nt-FbW" firstAttribute="leading" secondItem="3iu-EF-N7P" secondAttribute="leading" id="dpo-ml-yxA"/>
+                            <constraint firstItem="8Mf-cU-OJI" firstAttribute="leading" secondItem="3iu-EF-N7P" secondAttribute="leading" constant="8" id="gPw-ig-aIW"/>
                             <constraint firstItem="Em2-nt-FbW" firstAttribute="trailing" secondItem="3iu-EF-N7P" secondAttribute="trailing" id="hCu-Y5-jQn"/>
                             <constraint firstItem="3iu-EF-N7P" firstAttribute="trailing" secondItem="lne-5b-WZn" secondAttribute="trailing" constant="8" id="jfs-bT-QeH"/>
                             <constraint firstItem="X0Q-lT-WMN" firstAttribute="bottom" secondItem="3iu-EF-N7P" secondAttribute="bottom" id="tOf-ca-ee8"/>
@@ -182,6 +190,7 @@
                         <outlet property="messageTextField" destination="X0Q-lT-WMN" id="pD5-2c-ONx"/>
                         <outlet property="sendButton" destination="lne-5b-WZn" id="NEU-Mz-Rze"/>
                         <outlet property="tableView" destination="OLJ-nb-r1r" id="7TZ-39-pno"/>
+                        <outlet property="typingUsersLabel" destination="8Mf-cU-OJI" id="Td8-X5-Vat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDW-JY-IQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
