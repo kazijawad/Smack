@@ -8,14 +8,21 @@
 
 import UIKit
 
-class ChatVC: UIViewController {
+class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var channelNameLabel: UILabel!
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.bindToKeyboard()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.handleTap))
         view.addGestureRecognizer(tap)
         
@@ -64,6 +71,24 @@ class ChatVC: UIViewController {
         updateWithChannel()
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell {
+            let message = MessageService.instance.messages[indexPath.row]
+            cell.configureCell(message: message)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
     func onLoginGetMessages() {
         MessageService.instance.findAllChannels { (success) in
             if success {
@@ -86,7 +111,9 @@ class ChatVC: UIViewController {
     func getMessages() {
         guard let channelID = MessageService.instance.selectedChannel?.id else { return }
         MessageService.instance.findAllMessagesForChannel(channelID: channelID) { (success) in
-            // TODO
+            if success {
+                self.tableView.reloadData()
+            }
         }
     }
 }
