@@ -92,3 +92,5 @@ iOSInjectionProject/
 # macOS
 .DS_STORE
 
+# Node.js
+node_modules/

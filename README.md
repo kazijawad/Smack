@@ -33,7 +33,9 @@ let LOGIN_URL = "\(BASE_URL)account/login"
 let USER_ADD_URL = "\(BASE_URL)user/add"
 ```
 
-4. Click play to build the app and run on the iOS Simulator
+4. Start MongoDB Daemon and API under `ChatAPI/`
+
+5. Click play to build the app and run on the iOS Simulator
 
 ## Built With
 
