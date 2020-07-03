@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ```
 Swift 5.x
-API/Database Server
+Node.js 6.x
 ```
 
 ### Installing
@@ -25,7 +25,7 @@ git clone https://github.com/kazijawad/Smack.git
 Smack.xcworkspace
 ```
 
-3. Initialize API server routes under "Utilities/Constants.swift"
+3. Initialize API server routes under `Utilities/Constants.swift`
 ```
 let BASE_URL = "http://localhost:3005/v1/"
 let REGISTER_URL = "\(BASE_URL)account/register"
@@ -44,6 +44,9 @@ let USER_ADD_URL = "\(BASE_URL)user/add"
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - JSON Library
 * [Socket.IO](https://github.com/socketio/socket.io-client-swift) - Real-Time Engine
 * [Starscream](https://github.com/daltoniam/Starscream) - Websocket Library
+* [MongoDB](https://www.mongodb.com/) - NoSQL Database
+* [Express](https://expressjs.com/) - Node.js Web Framework
+* [Passport](http://www.passportjs.org/) - Node.js Authentication Library
 
 ## Acknowledgments
 
